@@ -4,9 +4,6 @@ import CONFIG from '../../Data/inputConfig.json';
 import { AiOutlineUserAdd } from 'react-icons/ai';
 import { BiLoader } from 'react-icons/bi';
 import { useSelector, useDispatch } from 'react-redux';
-// import { getContacts } from '../../Redux/phonebook/contacts-selectors';
-// import * as actions from '../../Redux/phonebook/contacts-actions';
-// import { operations } from '../../Redux/phonebook/contacts-operations';
 import { operations, actions, selectors } from 'Redux/phonebook';
 import { nanoid } from 'nanoid';
 

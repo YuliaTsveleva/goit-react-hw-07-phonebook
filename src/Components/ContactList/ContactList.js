@@ -2,12 +2,6 @@ import React, { useEffect } from 'react';
 import s from './ContactList.module.css';
 import ContactItem from '../ContactItem';
 import { useSelector, useDispatch } from 'react-redux';
-// import {
-//   getFilteredContacts,
-//   getLoadingContactList,
-// } from '../../Redux/phonebook/contacts-selectors';
-// import * as actions from '../../Redux/phonebook/contacts-actions';
-// import { operations } from '../../Redux/phonebook/contacts-operations';
 import { operations, selectors } from 'Redux/phonebook';
 
 export default function ContactList() {
