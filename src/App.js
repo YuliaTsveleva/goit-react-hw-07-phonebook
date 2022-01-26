@@ -6,9 +6,11 @@ import Filter from './Components/Filter';
 import EmptyText from './Components/EmptyText';
 import { useSelector } from 'react-redux';
 import { getContacts } from './Redux/phonebook/contacts-selectors';
+import { getLoadingContactList } from './Redux/phonebook/contacts-selectors';
 
 export default function App() {
   const contactsLength = useSelector(getContacts).length;
+  const loading = useSelector(getLoadingContactList);
 
   return (
     <div className="App">
@@ -18,7 +20,7 @@ export default function App() {
       <Section title="Contacts">
         {contactsLength > 1 && <Filter />}
         <ContactList />
-        {contactsLength === 0 && <EmptyText />}
+        {contactsLength === 0 && !loading && <EmptyText />}
       </Section>
     </div>
   );

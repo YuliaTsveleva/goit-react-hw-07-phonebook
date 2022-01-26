@@ -13,13 +13,20 @@ import {
 
 axios.defaults.baseURL = 'https://61f08b4e732d93001778eab3.mockapi.io';
 
-const fetchContacts = () => dispatch => {
+const fetchContacts = () => async dispatch => {
   dispatch(fetchContactsRequest());
 
-  axios
-    .get('/contacts')
-    .then(({ data }) => dispatch(fetchContactsSuccess(data)))
-    .catch(error => dispatch(fetchContactsError(error)));
+  try {
+    const { data } = await axios.get('/contacts');
+    dispatch(fetchContactsSuccess(data));
+  } catch (error) {
+    dispatch(fetchContactsError(error));
+  }
+
+  // axios
+  //   .get('/contacts')
+  //   .then(({ data }) => dispatch(fetchContactsSuccess(data)))
+  //   .catch(error => dispatch(fetchContactsError(error)));
 };
 
 const addContact =
