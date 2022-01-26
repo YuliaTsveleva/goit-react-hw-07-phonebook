@@ -1,15 +1,16 @@
 import React from 'react';
 import s from './Filter.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import * as actions from '../../Redux/phonebook/contacts-actions';
-import {
-  getFilter,
-  getContacts,
-} from '../../Redux/phonebook/contacts-selectors';
+import * as actions from 'Redux/phonebook/contacts-actions';
+// import {
+//   getFilter,
+//   getContacts,
+// } from '../../Redux/phonebook/contacts-selectors';
+import { selectors } from '../../Redux/phonebook';
 
 export default function Filter() {
-  const value = useSelector(getFilter);
-  const total = useSelector(getContacts).length;
+  const value = useSelector(selectors.getFilter);
+  const total = useSelector(selectors.getContacts).length;
   const dispatch = useDispatch();
   const onChange = e => dispatch(actions.changeFilter(e.target.value));
   return (

@@ -5,12 +5,13 @@ import ContactList from './Components/ContactList';
 import Filter from './Components/Filter';
 import EmptyText from './Components/EmptyText';
 import { useSelector } from 'react-redux';
-import { getContacts } from './Redux/phonebook/contacts-selectors';
-import { getLoadingContactList } from './Redux/phonebook/contacts-selectors';
+// import { getContacts } from './Redux/phonebook/contacts-selectors';
+// import { getLoadingContactList } from './Redux/phonebook/contacts-selectors';
+import { selectors } from './Redux/phonebook';
 
 export default function App() {
-  const contactsLength = useSelector(getContacts).length;
-  const loading = useSelector(getLoadingContactList);
+  const contactsLength = useSelector(selectors.getContacts).length;
+  const loading = useSelector(selectors.getLoadingContactList);
 
   return (
     <div className="App">

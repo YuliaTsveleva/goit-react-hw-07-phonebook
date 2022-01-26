@@ -3,10 +3,10 @@ import s from './AddContactForm.module.css';
 import CONFIG from '../../Data/inputConfig.json';
 import { AiOutlineUserAdd } from 'react-icons/ai';
 import { useSelector, useDispatch } from 'react-redux';
-import { getContacts } from '../../Redux/phonebook/contacts-selectors';
-import * as actions from '../../Redux/phonebook/contacts-actions';
-import { operations } from '../../Redux/phonebook/contacts-operations';
-
+// import { getContacts } from '../../Redux/phonebook/contacts-selectors';
+// import * as actions from '../../Redux/phonebook/contacts-actions';
+// import { operations } from '../../Redux/phonebook/contacts-operations';
+import { operations, actions, selectors } from 'Redux/phonebook';
 import { nanoid } from 'nanoid';
 
 export default function AddContactForm() {
@@ -14,7 +14,7 @@ export default function AddContactForm() {
   const [number, setNumber] = useState('');
   const [email, setEmail] = useState('');
 
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectors.getContacts);
   const dispatch = useDispatch();
 
   const handleChange = e => {
