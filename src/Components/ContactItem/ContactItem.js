@@ -2,8 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import s from './ContactItem.module.css';
 import { AiFillDelete } from 'react-icons/ai';
-
-function ContactItem({ name, number, email, onClick }) {
+import { BiLoader } from 'react-icons/bi';
+import { useSelector } from 'react-redux';
+import { selectors } from 'Redux/phonebook';
+function ContactItem({ id, name, number, email, onClick }) {
+  const loading = useSelector(selectors.getLoading);
   return (
     <li className={s.Item}>
       <div className={s.Wrapper}>
@@ -20,7 +23,8 @@ function ContactItem({ name, number, email, onClick }) {
         </p>
       </div>
       <button type="button" onClick={() => onClick()} className={s.Button}>
-        <AiFillDelete size={18} />
+        {loading !== id && <AiFillDelete size={18} />}
+        {loading === id && <BiLoader size={18} className={s.IconSpinner} />}
       </button>
     </li>
   );

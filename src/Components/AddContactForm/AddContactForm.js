@@ -18,7 +18,7 @@ export default function AddContactForm() {
   const contacts = useSelector(selectors.getContacts);
   const dispatch = useDispatch();
 
-  const loading = useSelector(selectors.getLoadingAddingContact);
+  const loading = useSelector(selectors.getLoading);
 
   const handleChange = e => {
     switch (e.target.name) {
@@ -83,9 +83,17 @@ export default function AddContactForm() {
         );
       })}
       <p className={s.Reminder}>Fields marked with * are required</p>
-      <button className={s.Button} type="submit" disabled={loading}>
-        {loading && <BiLoader size={14} className={s.IconSpinner} />}
-        {!loading && <AiOutlineUserAdd className={s.Icon} size={16} />}
+      <button
+        className={s.Button}
+        type="submit"
+        disabled={loading === 'adding'}
+      >
+        {loading === 'adding' && (
+          <BiLoader size={14} className={s.IconSpinner} />
+        )}
+        {loading !== 'adding' && (
+          <AiOutlineUserAdd className={s.Icon} size={16} />
+        )}
         Add contact
       </button>
     </form>

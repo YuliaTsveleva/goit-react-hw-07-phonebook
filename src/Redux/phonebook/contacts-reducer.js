@@ -29,22 +29,18 @@ const filter = createReducer('', {
   [changeFilter]: (_, { payload }) => payload,
 });
 
-const loadingContactList = createReducer(false, {
-  [fetchContacts.pending]: () => true,
-  [fetchContacts.fulfilled]: () => false,
-  [fetchContacts.rejected]: () => false,
-});
+const loading = createReducer('notLoading', {
+  [fetchContacts.pending]: () => 'loadingContacts',
+  [fetchContacts.fulfilled]: () => 'notLoading',
+  [fetchContacts.rejected]: () => 'notLoading',
 
-const loadingAddingContact = createReducer(false, {
-  [addContact.pending]: () => true,
-  [addContact.fulfilled]: () => false,
-  [addContact.rejected]: () => false,
-});
+  [addContact.pending]: () => 'adding',
+  [addContact.fulfilled]: () => 'notLoading',
+  [addContact.rejected]: () => 'notLoading',
 
-const loadingDeletingContact = createReducer(false, {
-  [deleteContact.pending]: () => true,
-  [deleteContact.fulfilled]: () => false,
-  [deleteContact.rejected]: () => false,
+  [deleteContact.pending]: (_, { meta }) => meta.arg,
+  [deleteContact.fulfilled]: () => 'notLoading',
+  [deleteContact.rejected]: () => 'notLoading',
 });
 
 const error = createReducer(null, {
@@ -55,8 +51,6 @@ const error = createReducer(null, {
 export default combineReducers({
   contacts,
   filter,
-  loadingContactList,
-  loadingAddingContact,
-  loadingDeletingContact,
+  loading,
   error,
 });

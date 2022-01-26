@@ -49,6 +49,8 @@
 }
 
 .Button {
+  width:24px;
+  height: 20px;
   padding: 1px 3px;
   height: 20px;
   background-color: rgba(17, 182, 25, 0.904);
@@ -62,4 +64,18 @@
 .Button:hover,
 .Button:focus {
   background-color: rgb(17, 143, 0);
+}
+
+.IconSpinner {
+  margin-right: 15px;
+  animation: spinner infinite 4s linear;
+}
+
+@keyframes spinner {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

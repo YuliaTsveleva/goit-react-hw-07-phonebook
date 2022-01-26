@@ -14,7 +14,7 @@ export default function ContactList() {
   const contacts = useSelector(selectors.getFilteredContacts);
   const dispatch = useDispatch();
   const onDeleteContact = id => dispatch(operations.deleteContact(id));
-  const loading = useSelector(selectors.getLoadingContactList);
+  const loading = useSelector(selectors.getLoading);
 
   useEffect(() => {
     dispatch(operations.fetchContacts());
@@ -22,7 +22,7 @@ export default function ContactList() {
 
   return (
     <>
-      {loading && <p>Loading...</p>}
+      {loading === 'loadingContacts' && <p>Loading...</p>}
       <ul className={s.contactsList}>
         {contacts &&
           contacts.map(contact => (

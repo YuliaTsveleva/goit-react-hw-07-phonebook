@@ -11,7 +11,7 @@ import { selectors } from './Redux/phonebook';
 
 export default function App() {
   const contactsLength = useSelector(selectors.getContacts).length;
-  const loading = useSelector(selectors.getLoadingContactList);
+  const loading = useSelector(selectors.getLoading);
 
   return (
     <div className="App">
@@ -21,7 +21,7 @@ export default function App() {
       <Section title="Contacts">
         {contactsLength > 1 && <Filter />}
         <ContactList />
-        {contactsLength === 0 && !loading && <EmptyText />}
+        {contactsLength === 0 && loading === 'notLoading' && <EmptyText />}
       </Section>
     </div>
   );
