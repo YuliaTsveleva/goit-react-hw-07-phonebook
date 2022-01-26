@@ -1,6 +1,7 @@
 export const getContacts = state => state.contacts;
 export const getFilter = state => state.filter;
 export const getLoadingContactList = state => state.loadingContactList;
+export const getLoadingAddingContact = state => state.loadingAddingContact;
 
 export const getFilteredContacts = state => {
   const { contacts, filter } = state;

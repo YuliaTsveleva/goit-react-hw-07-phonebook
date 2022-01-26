@@ -47,6 +47,25 @@
   background-color: rgb(0, 0, 248);
 }
 
+.Button:disabled{
+    background-color: rgb(123, 172, 247);
+}
+
 .Icon {
   margin-right: 6px;
+}
+
+
+.IconSpinner {
+  margin-right: 15px;
+  animation: spinner infinite 4s linear;
+}
+
+@keyframes spinner {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

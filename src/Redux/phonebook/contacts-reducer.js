@@ -35,10 +35,13 @@ const loadingContactList = createReducer(false, {
   [fetchContacts.rejected]: () => false,
 });
 
-const loadingContactItem = createReducer(false, {
+const loadingAddingContact = createReducer(false, {
   [addContact.pending]: () => true,
   [addContact.fulfilled]: () => false,
   [addContact.rejected]: () => false,
+});
+
+const loadingDeletingContact = createReducer(false, {
   [deleteContact.pending]: () => true,
   [deleteContact.fulfilled]: () => false,
   [deleteContact.rejected]: () => false,
@@ -53,6 +56,7 @@ export default combineReducers({
   contacts,
   filter,
   loadingContactList,
-  loadingContactItem,
+  loadingAddingContact,
+  loadingDeletingContact,
   error,
 });

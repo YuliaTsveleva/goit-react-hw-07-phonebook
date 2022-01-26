@@ -2,6 +2,7 @@ import { useState } from 'react';
 import s from './AddContactForm.module.css';
 import CONFIG from '../../Data/inputConfig.json';
 import { AiOutlineUserAdd } from 'react-icons/ai';
+import { BiLoader } from 'react-icons/bi';
 import { useSelector, useDispatch } from 'react-redux';
 // import { getContacts } from '../../Redux/phonebook/contacts-selectors';
 // import * as actions from '../../Redux/phonebook/contacts-actions';
@@ -16,6 +17,8 @@ export default function AddContactForm() {
 
   const contacts = useSelector(selectors.getContacts);
   const dispatch = useDispatch();
+
+  const loading = useSelector(selectors.getLoadingAddingContact);
 
   const handleChange = e => {
     switch (e.target.name) {
@@ -80,8 +83,9 @@ export default function AddContactForm() {
         );
       })}
       <p className={s.Reminder}>Fields marked with * are required</p>
-      <button className={s.Button} type="submit">
-        <AiOutlineUserAdd className={s.Icon} size={16} />
+      <button className={s.Button} type="submit" disabled={loading}>
+        {loading && <BiLoader size={14} className={s.IconSpinner} />}
+        {!loading && <AiOutlineUserAdd className={s.Icon} size={16} />}
         Add contact
       </button>
     </form>
